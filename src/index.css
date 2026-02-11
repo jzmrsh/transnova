@@ -103,3 +103,9 @@
     @apply bg-background/60 backdrop-blur-lg border border-border/40 shadow-lg;
   }
 }
+
+
+/* .container:not(header .container) {
+  padding-left: 0;
+  padding-right: 0;
+} */

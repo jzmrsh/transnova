@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-transnova.png";
 
-const navItems = ["Início", "Linhas", "Tarifas", "Empresa"];
+const navItems = ["Início", "Linhas", "Tarifas", "Publicidade"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);

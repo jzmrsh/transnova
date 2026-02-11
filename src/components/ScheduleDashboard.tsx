@@ -1,49 +1,97 @@
 import { Clock, MapPin } from "lucide-react";
+import { BUS_LINES } from "@/config/Lines";
+import { calculateDifferenceInMinutes, getCurrentDayOfWeek, getNextBus } from "@/services/TimeUtils";
+import { useBusSchedules } from "@/hooks/UseBusSchedules";
+import { BusSchedule } from "@/schemas/BusSchema";
 
-const lines = [
-  { id: "01", name: "Planalto", dest: "Terminal Central", mins: 5 },
-  { id: "02", name: "São Geraldo", dest: "Rodoviária", mins: 12 },
-  { id: "03", name: "Fátima", dest: "Centro", mins: 3 },
-  { id: "04", name: "Boa Vista", dest: "Terminal Central", mins: 8 },
-  { id: "05", name: "Industrial", dest: "Distrito Industrial", mins: 15 },
-  { id: "06", name: "Santa Terezinha", dest: "Centro", mins: 6 },
-];
+const ScheduleDashboard = () => {
+  const allSchedules = useBusSchedules();
+  // console.log(allSchedules);
+  const lines = BUS_LINES.map((line, index) => {
+    // console.log(index, line);
+    const schedules = allSchedules[index].data || [];
 
-const ScheduleDashboard = () => (
-  <section id="linhas" className="py-20 md:py-28 px-4">
-    <div className="container mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 opacity-0 animate-fade-up">
-        Horários em tempo real
-      </h2>
-      <p className="text-center text-muted-foreground mb-12 opacity-0 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-        Acompanhe a previsão de chegada dos ônibus
-      </p>
+    const nextIda = getNextBus(schedules.filter((s: BusSchedule) => s.day === getCurrentDayOfWeek() && s.type === "IDA"));
+    const nextVolta = getNextBus(schedules.filter((s: BusSchedule) => s.day === getCurrentDayOfWeek() && s.type === "VOLTA"));
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {lines.map((line, i) => (
-          <div
-            key={line.id}
-            className="glass-card rounded-xl p-5 hover:scale-[1.02] transition-transform opacity-0 animate-stagger-in"
-            style={{ animationDelay: `${0.1 * i}s` }}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="inline-flex items-center gap-2 text-secondary font-bold text-lg">
-                <span className="bg-secondary/10 rounded-lg px-2.5 py-0.5 text-sm">{line.id}</span>
-                {line.name}
-              </span>
-              <span className="flex items-center gap-1 text-sm font-semibold text-primary">
-                <Clock size={14} /> {line.mins} min
-              </span>
+    const getNextTimeString = (next: BusSchedule) => {
+      if (next) {
+        const timeInMins = calculateDifferenceInMinutes(next.time) + 1;
+        if (timeInMins > 59) {
+          const hours = Math.floor(timeInMins / 60);
+          const mins = timeInMins % 60;
+
+          return mins > 0 ? `${hours}h ${mins}min` : `${hours}h`;
+        } else {
+          return `${timeInMins}min`;
+        }
+      } else {
+        return "";
+      }
+    };
+    const result = {
+      ...line,
+      _ida: {
+        ...nextIda,
+        hourOrMins: getNextTimeString(nextIda),
+      },
+      _volta: {
+        ...nextVolta,
+        hourOrMins: getNextTimeString(nextVolta),
+      },
+    };
+    // console.log(result);
+    return result;
+  });
+
+  return (
+    <section id="linhas" className="py-20 md:py-28 px-1">
+      <div className="container mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 opacity-0 animate-fade-up">Horários em tempo real</h2>
+        <p className="text-center text-muted-foreground mb-12 opacity-0 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          Acompanhe a previsão de chegada dos ônibus
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {lines.map((line, i) => (
+            <div
+              key={line.id}
+              className="glass-card rounded-xl p-5 hover:scale-[1.02] transition-transform opacity-0 animate-stagger-in"
+              style={{ animationDelay: `${0.1 * i}s` }}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="inline-flex items-center gap-2 text-secondary font-bold text-lg">
+                  LINHA
+                  <span className="bg-secondary/10 rounded-lg px-2.5 py-0.5 text-sm">{line.id}</span>
+                </span>
+                {/* <span className="flex items-center gap-1 text-sm font-semibold text-primary">
+                  <Clock size={14} /> {line.mins} min
+                </span> */}
+              </div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <MapPin size={14} className="shrink-0" />
+                  {line.go}
+                </div>
+                <span className="flex items-center gap-1 text-sm font-semibold text-primary">
+                  <Clock size={14} /> {line._ida.hourOrMins}
+                </span>
+              </div>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <MapPin size={14} className="shrink-0" />
+                  {line.to}
+                </div>
+                <span className="flex items-center gap-1 text-sm font-semibold text-primary">
+                  <Clock size={14} /> {line._volta.hourOrMins}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin size={14} className="shrink-0" />
-              {line.dest}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ScheduleDashboard;

@@ -15,18 +15,24 @@ const fares = [
   },
   {
     icon: ArrowLeftRight,
-    title: "Integração",
-    price: "R$ 5,80",
-    desc: "Utilize duas linhas pagando uma única tarifa integrada.",
+    title: "Vale Transporte",
+    price: (
+      <a
+        href="http://191.242.202.32:8024/wbc-st5/login.faces"
+        target="_blank"
+        className="hidden md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
+      >
+        Consultar
+      </a>
+    ),
+    desc: "Deslocamento residência-trabalho, garantindo segurança e agilidade.",
   },
 ];
 
 const Fares = () => (
   <section id="tarifas" className="py-20 md:py-28 px-4 bg-muted/40">
     <div className="container mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 opacity-0 animate-fade-up">
-        Tarifas
-      </h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 opacity-0 animate-fade-up">Tarifas</h2>
       <p className="text-center text-muted-foreground mb-12 opacity-0 animate-fade-up" style={{ animationDelay: "0.1s" }}>
         Valores atualizados para 2026
       </p>

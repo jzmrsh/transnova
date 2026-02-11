@@ -4,18 +4,30 @@ const Hero = () => (
   <section
     id="início"
     className="relative flex flex-col items-center justify-center text-center pt-32 pb-20 md:pt-44 md:pb-32 px-4"
+    style={{
+      background: 'url("public/hero.jpeg")',
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }}
   >
+    <div className="absolute inset-0 bg-background/80"></div>
+    <div className="absolute inset-0 bg-gradient-to-b from-[transparent] to-[white]"></div>
     <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] max-w-3xl opacity-0 animate-fade-up">
-      Movendo Nova Serrana<br />
-      <span className="text-primary">com inteligência.</span>
+      Movendo pessoas,
+      <br />
+      <span className="text-primary">conectando marcas</span>
     </h1>
 
-    <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-up" style={{ animationDelay: "0.15s" }}>
-      Transporte público moderno, pontual e acessível para toda a cidade.
+    <p
+      className="mt-5 text-lg md:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-up"
+      style={{ animationDelay: "0.15s" }}
+    >
+      Transporte público moderno, pontual e acessível para toda Nova Serrana.
     </p>
 
     {/* Spotlight search */}
-    <div
+    {/* <div
       className="mt-10 w-full max-w-lg opacity-0 animate-fade-up"
       style={{ animationDelay: "0.3s" }}
     >
@@ -27,7 +39,7 @@ const Hero = () => (
           className="flex-1 bg-transparent text-sm md:text-base outline-none placeholder:text-muted-foreground"
         />
       </div>
-    </div>
+    </div> */}
   </section>
 );
 
