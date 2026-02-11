@@ -8,7 +8,7 @@ const market = [
       <a
         href="https://api.whatsapp.com/send?phone=553732261919&text=Tenho%20interesse%20na%20Publicidade%20*Back%20Bus*"
         target="_blank"
-        className="hidden md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
+        className="md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
       >
         Consultar
       </a>
@@ -22,7 +22,7 @@ const market = [
       <a
         href="https://api.whatsapp.com/send?phone=553732261919&text=Tenho%20interesse%20na%20Publicidade%20*Back%20Side/*"
         target="_blank"
-        className="hidden md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
+        className="md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
       >
         Consultar
       </a>
@@ -36,7 +36,7 @@ const market = [
       <a
         href="https://api.whatsapp.com/send?phone=553732261919&text=Tenho%20interesse%20na%20Publicidade%20*Back%20Seat*"
         target="_blank"
-        className="hidden md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
+        className="md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
       >
         Consultar
       </a>
