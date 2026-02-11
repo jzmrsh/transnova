@@ -20,7 +20,7 @@ const fares = [
       <a
         href="http://191.242.202.32:8024/wbc-st5/login.faces"
         target="_blank"
-        className="hidden md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
+        className="md:inline-flex h-9 px-5 items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:scale-105 transition-transform"
       >
         Consultar
       </a>
