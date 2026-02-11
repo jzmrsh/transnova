@@ -5,7 +5,7 @@ const Hero = () => (
     id="início"
     className="relative flex flex-col items-center justify-center text-center pt-32 pb-20 md:pt-44 md:pb-32 px-4"
     style={{
-      background: 'url("public/hero.jpeg")',
+      background: 'url("hero.jpeg")',
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
