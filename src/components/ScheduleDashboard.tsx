@@ -54,8 +54,10 @@ const ScheduleDashboard = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {lines.map((line, i) => (
-            <div
+            <a
               key={line.id}
+              href={`./linhas/${line.id}.pdf`}
+              target="_blank"
               className="glass-card rounded-xl p-5 hover:scale-[1.02] transition-transform opacity-0 animate-stagger-in"
               style={{ animationDelay: `${0.1 * i}s` }}
             >
@@ -86,7 +88,7 @@ const ScheduleDashboard = () => {
                   <Clock size={14} /> {line._volta.hourOrMins}
                 </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
