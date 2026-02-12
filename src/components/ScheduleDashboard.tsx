@@ -1,8 +1,9 @@
-import { Clock, MapPin } from "lucide-react";
+import { Clock, MapPin, TableProperties } from "lucide-react";
 import { BUS_LINES } from "@/config/Lines";
 import { calculateDifferenceInMinutes, getCurrentDayOfWeek, getNextBus } from "@/services/TimeUtils";
 import { useBusSchedules } from "@/hooks/UseBusSchedules";
 import { BusSchedule } from "@/schemas/BusSchema";
+import Countdown from "@/services/Countdown";
 
 const ScheduleDashboard = () => {
   const allSchedules = useBusSchedules();
@@ -66,9 +67,9 @@ const ScheduleDashboard = () => {
                   LINHA
                   <span className="bg-secondary/10 rounded-lg px-2.5 py-0.5 text-sm">{line.id}</span>
                 </span>
-                {/* <span className="flex items-center gap-1 text-sm font-semibold text-primary">
-                  <Clock size={14} /> {line.mins} min
-                </span> */}
+                <span className="flex items-center gap-1 text-sm font-semibold text-muted-foreground opacity-[70%]">
+                  Ver tabela <TableProperties size={14} />
+                </span>
               </div>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -76,7 +77,7 @@ const ScheduleDashboard = () => {
                   {line.go}
                 </div>
                 <span className="flex items-center gap-1 text-sm font-semibold text-primary">
-                  <Clock size={14} /> {line._ida.hourOrMins}
+                  <Clock size={14} className="animate-pulse" /> {Countdown({ initialTime: line._ida.hourOrMins })}
                 </span>
               </div>
               <div className="flex items-center justify-between mb-3">
@@ -85,7 +86,7 @@ const ScheduleDashboard = () => {
                   {line.to}
                 </div>
                 <span className="flex items-center gap-1 text-sm font-semibold text-primary">
-                  <Clock size={14} /> {line._volta.hourOrMins}
+                  <Clock size={14} className="animate-pulse" /> {Countdown({ initialTime: line._volta.hourOrMins })}
                 </span>
               </div>
             </a>
