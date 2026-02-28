@@ -5,7 +5,7 @@ const fares = [
     icon: Ticket,
     title: "Passagem Comum",
     price: "R$ 4,50",
-    desc: "Tarifa válida para qualquer linha do sistema municipal.",
+    desc: "Grátis finais de semana e feriados. Tarifa válida para qualquer linha do sistema municipal.",
   },
   {
     icon: GraduationCap,
