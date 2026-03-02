@@ -1,26 +1,56 @@
-# 🚌 Transnova - Horários de Ônibus
+# 🚌 Transnova - Mobilidade Urbana Inteligente
 
-Uma aplicação web moderna e rápida para consulta de horários e itinerários das linhas da Transnova. O projeto foi desenvolvido para facilitar o acesso à informação de mobilidade urbana de forma intuitiva.
+Uma aplicação web de alta performance desenvolvida para centralizar e facilitar o acesso aos horários e itinerários das linhas de ônibus da **Transnova** em Nova Serrana/MG.
 
-Este é um dos projetos práticos realizados como parte das atividades do **PEX (Projeto de Extensão)** universitário, unindo tecnologia e utilidade pública.
+> **Projeto de Extensão (PEX I)**: Este software foi desenvolvido como parte do currículo de Engenharia de Software, unindo rigor técnico e utilidade pública para atender ao **ODS 11 (Cidades e Comunidades Sustentáveis)** da ONU.
 
-## 🚀 Tecnologias Utilizadas
+## 🎯 O Problema e a Solução
 
-* **React + TypeScript** (Vite)
-* **Tailwind CSS** (Estilização)
-* **TanStack Query** (Gerenciamento de dados)
-* **Google Sheets API** (Banco de dados dinâmico)
-* **GitHub Actions** (Deploy automatizado)
+Muitos usuários de transporte público enfrentam dificuldades pela falta de informações digitais acessíveis sobre horários. O **Transnova** resolve isso ao oferecer uma interface rápida, leve e sempre atualizada, permitindo que o cidadão planeje seu deslocamento com precisão.
 
-## 🛠️ Funcionalidades
+## 🚀 Tecnologias e Engenharia
 
-* **Busca em tempo real:** Filtre linhas por nome ou destino.
-* **Dados Dinâmicos:** Horários atualizados via planilha externa sem necessidade de novo deploy.
-* **Design Responsivo:** Otimizado para dispositivos móveis e desktops.
-* **Cálculo de Próximo Ônibus:** Identifica automaticamente a próxima saída com base no horário atual.
+O projeto utiliza uma stack moderna para garantir escalabilidade e baixa manutenção:
 
-## 📦 Como rodar o projeto localmente
+* **React + TypeScript (Vite)**: Interface reativa com tipagem forte para evitar erros em runtime.
+* **Tailwind CSS + Shadcn/UI**: Design responsivo focado na experiência do usuário (UX) em dispositivos móveis.
+* **TanStack Query (React Query)**: Gerenciamento de estado assíncrono e cache inteligente de dados.
+* **Google Sheets API**: Utilizada como um CMS (Content Management System) headless, permitindo que os horários sejam atualizados em tempo real sem a necessidade de novos deploys.
+* **GitHub Actions**: Pipeline de CI/CD para deploy automatizado.
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/jzmrsh/transnova.git
+## 🛠️ Funcionalidades Principais
+
+* 🔍 **Filtro Inteligente**: Busca instantânea por nome da linha ou destino.
+* 🕒 **Cálculo de Próxima Partida**: Algoritmo que identifica automaticamente o próximo horário de saída com base no relógio do dispositivo.
+* 📱 **PWA Ready**: Interface otimizada para uso em pontos de ônibus com baixo sinal de internet.
+* 📊 **Dados Vivos**: Sincronização direta com planilha de dados operacionais.
+
+## 📦 Instalação e Execução Local
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/jzmrsh/transnova.git
+
+```
+
+
+2. **Instale as dependências:**
+```bash
+npm install  # ou bun install
+
+```
+
+
+3. **Inicie o servidor de desenvolvimento:**
+```bash
+npm run dev
+
+```
+
+
+
+---
+
+**Curso:** Engenharia de Software
+
+**Objetivo:** Extensão Universitária - Tecnologia para a Comunidade.
